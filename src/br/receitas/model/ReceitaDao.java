@@ -21,9 +21,23 @@ public class ReceitaDao {
 				new Receita(5, LocalDate.of(2020, 12, 30),
 				"Bife acebolado", "INGREDIENTES\n1 cebola grande...", ad.getPorId(2))
 				));
-				receitas.get(0).setHashtags("café", "indonésia", "bebida");
-				receitas.get(1).setHashtags("ovos", "low-carb", "sem carne");
-				receitas.get(2).setHashtags("almoço", "low-carb");
+		
+				Set<String> hashTags = new TreeSet<>();
+				hashTags.add("café");
+				hashTags.add("indonésia");
+				hashTags.add("bebida");
+				receitas.get(0).setHashtags(hashTags);
+				
+				Set<String> hashTags2 = new TreeSet<>();
+				hashTags2.add("ovos");
+				hashTags2.add("low-carb");
+				hashTags2.add("sem carne");
+				receitas.get(1).setHashtags(hashTags2);
+				
+				Set<String> hashTags3 = new TreeSet<>();
+				hashTags3.add("almoço");
+				hashTags3.add("low-carb");
+				receitas.get(2).setHashtags(hashTags3);
 		
 	}
 	
