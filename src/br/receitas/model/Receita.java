@@ -13,6 +13,8 @@ public class Receita {
 	private Set<String> hashTags = new TreeSet<>();
 	private Autor autor;
 	
+	
+	
 	Receita(int id, LocalDate data, String nome, String texto, Autor autor) {
 		this.id = id;
 		this.data = data;
