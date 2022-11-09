@@ -60,7 +60,7 @@ public class Receita {
 		this.texto = texto;
 	}
 
-	public Set<String> getHashTags() {
+	public Set<String> getHashtags() {
 		return Collections.unmodifiableSet(hashTags);
 	}
 

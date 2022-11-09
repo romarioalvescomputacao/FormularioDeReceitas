@@ -41,7 +41,42 @@ public class ReceitaDao {
 		
 	}
 	
-	private List<Receita> getTodos(){
+	public List<Receita> getTodos(){
 		return Collections.unmodifiableList(receitas);
+	}
+	
+	public Receita getPorId(int id) {
+		return receitas.stream().filter(r -> r.getId() == id).findFirst().orElse(null);
+	}
+	
+	public void salvar(Receita receita) {
+		new AutorDao().salvar(receita.getAutor());
+		
+		if(receita.getId() == -1) {
+			receita.setId(gerarId());
+			receitas.add(receita);
+		
+		} else {
+			excluir(receita);
+			receitas.add(receita);
+		}
+	}
+	
+	public boolean excluir(Receita receita){
+		//A receita nunca foi inserida? Não há o que excluir
+		if(receita.getId() == -1) return false;
+		
+		//Tentamos remover a receita da lista
+		int tamanho = receitas.size();
+		receitas = receitas.stream().filter(a -> a.getId() != receita.getId()).collect(Collectors.toList());
+		
+		//O tamanho da lista diminuiu?
+		if(receitas.size() < tamanho) {
+			receita.setId(-1);
+			return true;
+		}
+		
+		//Não foi possível excluir?
+		return false;
 	}
 }
